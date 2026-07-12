@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    webpackBuildWorker: false,
+    workerThreads: false,
+    cpus: 1,
+  },
   // CORS cho API khi frontend deploy khác domain (Vercel)
   async headers() {
     const origin = process.env.CORS_ORIGIN || "*";
