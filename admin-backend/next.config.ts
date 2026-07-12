@@ -23,6 +23,14 @@ const nextConfig: NextConfig = {
     webpackBuildWorker: false,
     workerThreads: false,
     cpus: 1,
+    webpackMemoryOptimizations: true,
+    optimizePackageImports: ["antd", "@ant-design/icons", "@ant-design/charts", "framer-motion"],
+  },
+  webpack: (config) => {
+    if (config.optimization) {
+      config.optimization.minimize = false;
+    }
+    return config;
   },
   // CORS cho API khi frontend deploy khác domain (Vercel)
   async headers() {
